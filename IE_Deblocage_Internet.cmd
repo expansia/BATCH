@@ -2,7 +2,7 @@ CLS REM On efface l'‚cran
 @echo off
 echo +-----------------------------------------------------------------------------+
 echo ^| Fichier     : IE_Deblocage_Internet.cmd                                     ^|
-echo ^| Version     : 0.2                                                           ^|
+echo ^| Version     : 2.0                                                           ^|
 echo ^| Auteur      : Bruno Boissonnet                                              ^|
 echo ^| Date        : 11/07/2016                                                    ^|
 echo ^| Description : Supprime les cl‚s du regsitre qui empˆchent la connexion      ^|
