@@ -7,7 +7,7 @@ echo ^| Auteur      : Bruno Boissonnet                                          
 echo ^| Date        : 17/07/2015                                                    ^|
 echo ^| Description : Copie l'historique du serveur SRVLIN1 vers un poste OP_0X.    ^|
 echo ^| Remarques   : Le fichier doit ˆtre sauvegard‚ au format ANSI.               ^|
-echo ^|             : Copie tous les fichiers *.idx et *.lgh du dossier             ^| 
+echo ^|             : Copie tous les fichiers *.idx et *.lgh du dossier             ^|
 echo ^|               D:\Expansia\Histo\ dans E:\vers_autres\.                      ^|
 echo ^|             : Copie les fichiers *.idx et *.lgh sur le poste sélectionné.   ^|
 echo +-----------------------------------------------------------------------------+
@@ -39,6 +39,6 @@ REM +--FIN-DU-PROGRAMME---------------------------------------------------------
 echo(
 REM On fait une pause pour que la fenêtre reste affichée
 echo Appuyer sur une touche pour quitter le programme.
-pause>nul 
+pause>nul
 
 
