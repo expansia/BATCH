@@ -1,0 +1,65 @@
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+192.168.9.4			ARAMON04
+192.168.9.5 		ARAMON05
+#192.168.9.7 		ARAMON07
+192.168.9.9 		ARAMON02
+192.168.9.32		WSACCES
+192.168.9.39		POLYCOM 		# Visio conférence
+192.168.9.45		DECA
+192.168.9.98		SAVE001
+192.168.9.106		SAVE002
+#192.168.9.125		SRVLIN2
+192.168.9.142 		WATERS1
+192.168.9.165		TREND
+#192.168.9.173		SRVLIN1
+192.168.9.240		VCENTER
+192.168.9.241		ESX01
+192.168.9.242		ESX02
+
+# Bornes WIFI
+192.168.9.10 		AP01
+192.168.9.14 		AP02
+192.168.9.60 		AP03
+192.168.9.69 		AP04
+#192.168.9.150 		AP05
+
+192.168.9.239		NAS02
+
+# EUROTHERM
+192.168.254.22		OP_01
+192.168.254.23		OP_02
+192.168.254.26		repli
+192.168.254.36 		OP_03
+192.168.254.43		SRVLIN2
+192.168.254.44		SRVLIN1
+192.168.254.45		OP_04
+192.168.254.46		review1
+
+
+# Réseau industriel
+130.30.30.1 		SAVE001
+130.30.30.203		NORTON
+130.30.30.200 		WATERS1
+
+# Serveurs LGJM
+192.168.1.22 		SRV-ENNOV
