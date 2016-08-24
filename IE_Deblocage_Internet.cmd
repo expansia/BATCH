@@ -2,12 +2,12 @@ CLS REM On efface l'‚cran
 @echo off
 echo +-----------------------------------------------------------------------------+
 echo ^| Fichier     : IE_Deblocage_Internet.cmd                                     ^|
-echo ^| Version     : 2.1                                                           ^|
+echo ^| Version     : 2.2                                                           ^|
 echo ^| Auteur      : Bruno Boissonnet                                              ^|
 echo ^| Date        : 11/07/2016                                                    ^|
 echo ^| Description : Supprime les cl‚s du regsitre qui empˆchent la connexion      ^|
 echo ^|             : … internet.                                                   ^|
-echo ^| Remarques   : Le fichier doit ˆtre sauvegard‚ au format ANSI.               ^|
+echo ^| Remarques   : Le fichier doit ˆtre sauvegard‚ dans l'encodage ANSI(cp1252). ^|
 echo +-----------------------------------------------------------------------------+
 echo(
 echo Faire Ctrl+C pour quitter le programme ou appuyer sur une touche pour continuer.
@@ -33,7 +33,7 @@ REM  /f          Force la suppression sans demander de confirmation.
 REM -----------------------------------------------------------------
 
 REM REG ADD Nom_de_clé [/v Nom_de_valeur | /ve] [/t Type] [/s Séparateur]
-                   [/d Données] [/f]
+REM                   [/d Données] [/f]
 REM Crée une clé dans le registre
 REM  /v       Nom de la valeur, sous la clé sélectionnée, à ajouter.
 REM  /t       RegKey types de données
@@ -42,7 +42,7 @@ REM             REG_DWORD | REG_QWORD    | REG_BINARY    | REG_NONE ]
 REM           Si ce paramètre est omis, REG_SZ est pris par défaut.
 REM  /d       Données à affecter au Nom_de_valeur ajouté
 REM  /f       Force l'écrasement de l'entrée de Registre existante, sans
-           confirmation.
+REM           confirmation.
 
 
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /f
