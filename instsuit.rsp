@@ -1,0 +1,756 @@
+;(SmartSuite)
+;************************************************
+;
+; INFORMATIONS SUR L'INSTALLATION AUTOMATIQUE
+;
+; L'installation automatique est une fonction qui 
+; permet aux utilisateurs d'exécuter le programme 
+; d'installation Lotus sans avoir à dialoguer avec 
+; l'interface. Cette fonction est particulièrement 
+; pratique pour les administrateurs qui doivent gérer 
+; les installations et mises à jour d'applications 
+; pour des groupes comportant un grand nombre 
+; d'utilisateurs.
+;
+; Pour utiliser cette fonction, l'administrateur 
+; doit simplement compléter les champs de ce fichier 
+; réponse (instsuit.rsp) et mettre celui-ci à la 
+; disposition des utilisateurs. Les informations 
+; fournies dans ce fichier permettent ensuite au 
+; programme d'installation de fonctionner sans aucune 
+; intervention de la part des utilisateurs. Cette
+; installation silencieuse ou non surveillée est
+; compatible avec les outils de déploiement et
+; d'installation tels que les modules de distribution
+; de logiciel SMS de Microsoft et TME de Tivoli.
+;
+; REMARQUE : Seul l'administrateur doit être habilité
+; à éditer ce fichier réponse. Les utilisateurs doivent
+; se servir du fichier réponse fourni par leur
+; administrateur.
+;
+; POUR UTILISER LA FONCTION D'INSTALLATION AUTOMATIQUE :
+;
+; 1) Préparez le fichier réponse :
+;
+;    a) Sauvegardez ce fichier sous un autre nom
+;       (par exemple, instsuit.enr) pour pouvoir 
+;       le réutiliser ultérieurement.
+;    b) Complétez tous les champs de ce fichier. 
+;       Examinez chacune des valeurs par défaut pour  
+;       vérifier si elles vous conviennent. Lisez les 
+;       commentaires relatifs à chaque champ pour prendre
+;       connaissance des valeurs autorisées et
+;       des interactions éventuelles avec d'autres champs.
+;    c) Testez le fichier réponse en l'utilisant pour
+;       effectuer une installation (consultez les
+;       informations relatives à la ligne de commande
+;       plus avant dans ce fichier). Le programme 
+;       d'installation signale systématiquement les 
+;       erreurs qui se produisent pendant la procédure. 
+;       Si vous voulez tester l'installation sur poste 
+;       de travail, pensez d'abord à installer le
+;       programme sur le serveur.
+;
+; 2) Mettez le fichier réponse à la disposition 
+;    des utilisateurs
+;
+;    Une fois le fichier réponse testé et conforme au type
+;    d'installation souhaitée, mettez-le à la disposition
+;    des utilisateurs en leur précisant comment l'exécuter.
+;    Vous pouvez leur indiquer la ligne de commande à
+;    saisir ou préférer une autre méthode. Choisissez la
+;    solution qui vous convient, en fonction des outils
+;    dont vous disposez.
+;
+; CONSEILS : Ne modifiez pas les noms de champ situés à
+;    gauche du signe égal (=) dans ce fichier. 
+;    De telles modifications provoqueraient des erreurs.
+;
+;    Ne supprimez aucun champ de ce fichier, car cela
+;    donnerait également lieu à des erreurs.
+;
+; REMARQUE : Certaines des propriétés incluses dans ce
+;    fichier réponse peuvent aussi être spécifiées à
+;    partir de la ligne de commande. Pour éviter
+;    d'éventuels conflits entre cette dernière et le fichier
+;    réponse, il est préférable de n'utiliser qu'une seule
+;    méthode pour fournir les paramètres.
+;    
+; POUR EFFECTUER L'INSTALLATION AUTOMATIQUE :
+;
+; Entrez la commande suivante à partir de la ligne de
+; commande, en y substituant votre chemin d'accès local
+; ainsi que le nom de votre fichier réponse.
+;
+; setup /v"/qn RSP=\"<chemin_d'accès>\fichier.rsp\""
+;
+; où :
+;
+;   /v indique au programme d'installation les options de
+;   ligne de commande à transmettre à MSIEXEC.EXE (la
+;   technologie d'installation Microsoft utilisée par
+;   SmartSuite) une fois ce dernier installé.
+;
+;   /qn supprime l'interface utilisateur du programme
+;   d'installation.
+;
+;   RSP est une propriété publique SmartSuite qui indique
+;   au programme d'installation qu'il doit lire le fichier
+;   fourni par l'utilisateur (c'est-à-dire fichier.rsp).
+;
+;   <chemin_d'accès> représente l'emplacement du fichier RSP.
+;
+;   fichier.rsp est le nom du fichier réponse.
+;
+; REMARQUE : Pour inclure les guillemets intérieurs
+;   nécessaires dans la ligne de commande, tapez une barre
+;   oblique inverse (\) devant chacun des guillemets, comme
+;   illustré dans l'exemple ci-dessus. 
+;
+;
+;*******************************************************
+;
+; LE FICHIER REPONSE COMMENCE ICI :
+;
+;*******************************************************
+;
+; La section [CUSTOMSUITE] contient des informations relatives
+; à une installation personnalisée de SmartSuite. La présence
+; d'un 1 indique que la fonction correspondante est installée,
+; celle d'un 0 qu'elle n'est pas installée.
+; 
+;*********************************
+
+[CUSTOMSUITE]
+
+
+;*********************************
+; 
+; Dossier d'installation de SmartSuite
+; Utilisez le champ "INSTALLDIR" pour spécifier le dossier
+; dans lequel installer tous les fichiers produit SmartSuite.
+;
+;*********************************
+
+INSTALLDIR=c:\lotus
+
+
+;*********************************
+; 
+; Informations relatives à l'utilisateur de SmartSuite
+; Ces champs permettent de préciser l'identité de
+; l'utilisateur de cet exemplaire du produit.
+;
+; Tapez le nom de l'utilisateur dans le champ "USERNAME"
+; et le nom de la société dans le champ "COMPANYNAME".
+;
+;*********************************
+
+USERNAME=EXPANSIA
+COMPANYNAME=EXPANSIA
+
+
+;*********************************
+; 
+; Installation complète de SmartSuite
+; Le champ "COMPLETE" sert à spécifier le type de
+; l'installation : Un 1 désigne une installation complète,
+; tandis qu'un 0 indique une installation personnalisée.
+;
+; Si vous attribuez la valeur 1 au champ "COMPLETE" pour
+; demander une installation complète, il ne vous est pas
+; nécessaire de paramétrer les champs suivants, à moins
+; que vous ne souhaitiez préciser les chemins d'accès ou
+; le type de fichier par défaut de 1-2-3.
+;
+;*********************************
+
+COMPLETE=0
+
+
+;*********************************
+; 
+; Windows 2000/NT MultiUser
+;
+; Utilisez le champ "ALLUSERS" pour indiquer si vous
+; souhaitez installer SmartSuite pour de multiples
+; utilisateurs sur un ordinateur NT version 4.0 ou
+; ultérieure.
+; 1 : Installation multi-utilisateur
+; 0 : Installation utilisateur unique
+;
+;*********************************
+
+ALLUSERS=1
+
+
+;*********************************
+; 
+; Icônes de programme SmartSuite
+;
+; Indiquez dans le champ "SUIT_STARTUP_ICONS" si Install
+; doit ajouter les icônes de programme dans votre dossier
+; Démarrage ou dans votre groupe de programmes. 
+; 
+; La valeur 0 implique que les applications ne seront
+; pas lancées automatiquement lors du démarrage de
+; Windows.
+;
+;*********************************
+
+SUIT_STARTUP_ICONS=0
+
+
+;*********************************
+;
+; Polices SmartSuite
+; 
+; Le champ "SUIT_FONTS" vous permet de spécifier si vous
+; souhaitez installer les polices fournies avec SmartSuite.
+;
+;*********************************
+
+SUIT_FONTS=0
+
+
+;*********************************
+; 
+; Sauvegarde des modèles SmartMaster existants
+;
+; Faites appel au champ "BACKUP_OLD_SMASTERS" pour indiquer
+; si vous souhaitez sauvegarder tout modèle existant 1-2-3,
+; Approach, Freelance Graphics ou Word Pro. Ces fichiers
+; sont alors sauvegardés dans le dossier \lotus\sauve.
+;
+;*********************************
+
+BACKUP_OLD_SMASTERS=0
+
+
+;*********************************
+;
+; Bases de documents Notes SmartSuite
+;
+; FastSite et Freelance Graphics disposent tous deux de
+; bases de documents Notes spécifiques. Utilisez le
+; champ "SUIT_NOTESDB" pour préciser si vous souhaitez
+; installer ces bases pour les deux produits.
+;
+;*********************************
+
+SUIT_NOTESDB=0
+
+
+;*********************************
+;
+; Multimédia SmartSuite
+;
+; Utilisez le champ "SUIT_MULTIMEDIA" pour obtenir
+; l'installation des images, symboles, films et sons de
+; Freelance Graphics.
+;
+;*********************************
+
+SUIT_MULTIMEDIA=0
+
+
+;*********************************
+; 
+; SmartSuite et ODBC
+; 1-2-3 et Approach recourent tous deux aux pilotes ODBC.
+;
+; Servez-vous du champ "SUIT_ODBC" pour indiquer si vous
+; souhaitez installer ces pilotes. Les autres champs
+; proposés ci-dessous vous permettent de sélectionner ou
+; désélectionner les pilotes ODBC à utiliser.
+;
+;*********************************
+
+SUIT_ODBC=1
+SUIT_ODBC_DBASE=1
+SUIT_ODBC_SQL=1
+SUIT_ODBC_SYBASE=1
+SUIT_ODBC_TEXT=1
+SUIT_ODBC_PARADOX=1
+SUIT_ODBC_NOTESSQL=1
+
+
+;*********************************
+; 
+; Documentation en ligne de SmartSuite
+; Le champ "SUIT_DOCONLINE" sert à indiquer si vous
+; souhaitez installer la documentation en ligne de
+; SmartSuite.
+; Nécessite PDF Reader.
+;
+;*********************************
+
+SUIT_DOCONLINE=1
+
+
+;*********************************
+;
+; Vérificateur orthographique de SmartSuite
+;
+; Vous pouvez recourir au champ "SUIT_SPELLCHECKER"
+; pour demander l'installation du vérificateur
+; orthographique.
+; Les autres champs proposés vous permettent de
+; sélectionner ou désélectionner les dictionnaires
+; des différentes langues auxquels le vérificateur
+; orthographique fait appel.
+; 
+; Le choix d'un dictionnaire donné entraîne également
+; celui du dictionnaire de synonymes correspondant.
+;
+; Pour sélectionner un dictionnaire, attribuez-lui la
+; valeur 1. Pour le désélectionner, la valeur 0 (zéro).
+;*********************************
+
+SUIT_SPELLCHECKER=0
+
+ENGLISH_SPELL_DICTIONARY=0
+FRENCH_SPELL_DICTIONARY=1
+SPANISH_SPELL_DICTIONARY=0
+AFRIKAANS_SPELL_DICTIONARY=0
+AUSTRIAN_SPELL_DICTIONARY=0
+CATALAN_SPELL_DICTIONARY=0
+CZECH_SPELL_DICTIONARY=0
+DANISH_SPELL_DICTIONARY=0
+DUTCH_SPELL_DICTIONARY=0
+FINNISH_SPELL_DICTIONARY=0
+GERMAN_SPELL_DICTIONARY=0
+GREEK_SPELL_DICTIONARY=0
+ITALIAN_SPELL_DICTIONARY=0
+NORWEGIAN_SPELL_DICTIONARY=0
+PORTUGUESE_SPELL_DICTIONARY=0
+RUSSIAN_SPELL_DICTIONARY=0
+SWEDISH_SPELL_DICTIONARY=0
+
+
+;**********************************
+;
+; Installation automatique personnalisée de 1-2-3
+;
+; La section [CUSTOM123] fournit les informations
+; relatives à une installation personnalisée de
+; 1-2-3.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+; 
+;**********************************
+
+[CUSTOM123]
+
+
+;**********************************
+; 
+;
+; Fonctionnalités de 1-2-3
+;
+; Utilisez le champ "L123DIR" pour indiquer si vous
+; souhaitez installer 1-2-3.
+;
+; Utilisez le champ "L123_MAPS" pour indiquer si
+; vous souhaitez installer les cartes 1-2-3.
+;
+; Utilisez le champ "L123_SMASTERS" pour indiquer si
+; vous souhaitez installer les modèles SmartMaster.
+;
+; Utilisez le champ "L123_TEAMCONS" pour indiquer si
+; vous souhaitez installer la fonctionnalité
+; TeamConsolidation opérant avec Notes.
+; 
+; Utilisez le champ "L123_DEFAULT_FILE_TYPE" pour
+; spécifier le type de fichier par défaut de 1-2-3. 
+; 1 Classeur Lotus 1-2-3 97
+; 2 Classeur Lotus 1-2-3 OS/2 Warp
+; 3 Classeur Lotus 1-2-3 9
+; 7 Lotus 1-2-3 WK4
+; 8 Lotus 1-2-3 WK3
+; 10 Lotus 1-2-3 WK1
+;**********************************
+
+L123=0
+L123_MAPS=1
+L123_SMASTERS=1
+L123_TEAMCONS=1
+L123_DEFAULT_FILE_TYPE=3
+
+
+;**********************************
+;
+; Sous-dossiers de 1-2-3
+;
+; Utilisez le champ "L123BACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "L123WORK" pour désigner le dossier où
+; enregistrer le travail des utilisateurs.
+;
+; Utilisez le champ "L123SMASTERS" pour désigner le dossier
+; où consigner les modèles SmartMaster.
+;
+; Utilisez le champ "L123SAMPLES" pour désigner le dossier
+; où consigner les fichiers d'exemples.
+;***********************************
+
+L123BACKUP=c:\lotus\sauve\123\
+L123WORK=c:\lotus\travail\123\
+L123SMASTERS=c:\lotus\smasters\123\
+L123SAMPLES=c:\lotus\samples\123\
+
+
+;***********************************
+;
+; Installation automatique personnalisée d'Approach
+; La section [CUSTOMAPR] fournit les informations
+; relatives à une installation personnalisée
+; d'Approach.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+;
+;***********************************
+
+[CUSTOMAPR]
+
+
+;***********************************
+; 
+; Fonctionnalités d'Approach
+;
+; Utilisez le champ "APPROACH" pour indiquer si vous
+; souhaitez installer Approach. 
+;
+; Utilisez le champ "APR_SMASTERS" pour indiquer si
+; vous souhaitez installer les modèles SmartMaster.
+;
+; Utilisez le champ "APR_QMF" pour indiquer si vous
+; souhaitez installer QMF pour DB2.
+;
+;***********************************
+
+APPROACH=1
+APR_SMASTERS=1
+APR_QMF=1
+
+
+;**********************************
+;
+; Sous-dossiers d'Approach
+;
+; Utilisez le champ "APRBACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "APRWORK" pour désigner le dossier
+; où enregistrer le travail des utilisateurs.
+;
+; Utilisez le champ "APRSMASTERS" pour désigner le dossier
+; où consigner les modèles SmartMaster des utilisateurs.
+;
+;**********************************
+
+
+APRBACKUP=c:\lotus\sauve\approach\
+APRWORK=c:\lotus\travail\approach\
+APRSMASTERS=c:\lotus\smasters\approach\
+
+
+;**********************************
+;
+; Installation automatique personnalisée de Word Pro
+; La section [CUSTOMLWP] fournit les informations
+; relatives à une installation personnalisée
+; de Word Pro.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+;
+;**********************************
+
+[CUSTOMLWP]
+
+
+;**********************************
+;
+; Fonctionnalités de Word Pro
+;
+; Utilisez le champ "WORDPRO" pour indiquer si vous
+; souhaitez installer Word Pro. 
+;
+; Utilisez le champ "SMASTERS" pour indiquer si vous
+; souhaitez installer les modèles SmartMaster.
+;
+; Utilisez le champ "LWP_SMASTERS" dans le cas d'une
+; installation sur poste de travail : la valeur 1
+; signifie que les modèles SmartMaster sont copiés à
+; l'emplacement indiqué ci-dessous, tandis que la
+; valeur 0 signifie qu'ils restent sur le serveur.
+;
+; Utilisez le champ "LWP_FILTERS" pour indiquer si
+; vous souhaitez installer les filtres Word Pro.
+;
+;**********************************
+
+WORDPRO=0
+SMASTERS=1
+LWP_SMASTERS=1
+LWP_FILTERS=1
+
+
+;**********************************
+;
+; Sous-dossiers de Word Pro
+;
+; Utilisez le champ "LWPBACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "LWPWORK" pour désigner le dossier
+; où enregistrer le travail des utilisateurs.
+;
+; Utilisez le champ "LWPMENUS" pour désigner le dossier
+; où enregistrer les menus des utilisateurs.
+;
+; Utilisez le champ "LWPSAMPLES" pour désigner le dossier
+; où consigner les fichiers d'exemples.
+;
+; Utilisez le champ "LWPSMASTERS" pour désigner le dossier
+; où consigner les modèles SmartMaster.
+;
+; Utilisez le champ "LWPGRAPHICS" pour désigner le dossier
+; où consigner les graphiques.
+;
+; Utilisez le champ "LWPICONS" pour désigner le dossier
+; où consigner les icônes SmartIcons.
+;
+; Utilisez le champ "LWPSCRIPTS" pour désigner le dossier
+; où consigner les scripts.
+;
+;**********************************
+
+LWPBACKUP=c:\lotus\sauve\wordpro\
+LWPWORK=c:\lotus\travail\wordpro\
+LWPMENUS=c:\lotus\wordpro\menus\
+LWPSAMPLES=c:\lotus\samples\wordpro\
+LWPSMASTERS=c:\lotus\smasters\wordpro\
+LWPGRAPHICS=c:\lotus\wordpro\graphics\
+LWPICONS=c:\lotus\wordpro\icons\
+LWPSCRIPTS=c:\lotus\wordpro\scripts\
+
+
+;**********************************
+;
+; Installation automatique personnalisée de
+; Freelance Graphics
+; La section [CUSTOMFLG] fournit les informations
+; relatives à une installation personnalisée
+; de Freelance Graphics.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+; 
+;**********************************
+
+[CUSTOMFLG]
+
+
+;**********************************
+;
+; Fonctionnalités de Freelance Graphics
+;
+; Utilisez le champ "FREELANCE" pour indiquer si vous
+; souhaitez installer Freelance Graphics. 
+;
+; Utilisez le champ "FLG_SMASTERS" pour indiquer si vous
+; souhaitez installer les jeux de maquette SmartMaster.
+;
+; Utilisez le champ "FLG_PLAYER" pour indiquer si vous
+; souhaitez installer le projecteur d'animations.
+;
+; Utilisez le champ "FLG_SMCONTENT" pour indiquer si vous
+; souhaitez installer les scénarios SmartMaster.
+;
+;**********************************
+
+FREELANCE=0
+FLG_SMASTERS=1
+FLG_PLAYER=1
+FLG_SMCONTENT=0
+
+
+;**********************************
+;
+; Sous-dossiers de Freelance Graphics
+;
+; Utilisez le champ "FLGBACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "FLGWORK" pour désigner le dossier
+; où enregistrer le travail des utilisateurs.
+;
+; Utilisez le champ "FLGMEDIA" pour désigner le dossier
+; où enregistrer les fichiers multimédia des utilisateurs.
+;
+; Utilisez le champ "FLGSMASTERS" pour désigner le dossier
+; où consigner les jeux de maquette SmartMaster.
+;
+;**********************************
+
+FLGBACKUP=c:\lotus\sauve\flg\
+FLGWORK=c:\lotus\travail\flg\
+FLGMEDIA=c:\lotus\flg\media\
+FLGSMASTERS=c:\lotus\smasters\flg\
+
+
+;**********************************
+;
+; Installation automatique personnalisée de FastSite
+; La section [CUSTOMFST] fournit les informations
+; relatives à une installation personnalisée
+; de FastSite.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+; 
+;**********************************
+
+[CUSTOMFST]
+
+
+;**********************************
+;
+; Fonctionnalités de FastSite
+;
+; Utilisez le champ "FASTSITE" pour indiquer si vous
+; souhaitez installer FastSite. 
+;
+; Utilisez le champ "FST_SMASTERS" pour indiquer si
+; vous souhaitez installer les modèles SmartMaster.
+;
+;**********************************
+
+FASTSITE=0
+FST_SMASTERS=1
+
+
+;**********************************
+;
+; Sous-dossiers de FastSite
+;
+; Utilisez le champ "FSTBACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "FSTWORK" pour désigner le dossier
+; où enregistrer le travail des utilisateurs.
+;
+; Utilisez le champ "FSTMASTERS" pour désigner le dossier
+; où installer les modèles SmartMaster.
+;
+;**********************************
+
+FSTBACKUP=c:\lotus\sauve\fastsite\
+FSTWORK=c:\lotus\travail\fastsite\
+FSTSMASTERS=c:\lotus\smasters\fastsite\looks\
+
+
+;**********************************
+;
+; Installation automatique personnalisée d'Organizer
+; La section [CUSTOMORG] fournit les informations
+; relatives à une installation personnalisée
+; d'Organizer.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+;  
+;**********************************
+
+[CUSTOMORG]
+
+
+;**********************************
+;
+; Fonctionnalités d'Organizer
+;
+; Utilisez le champ "ORGANIZER" pour indiquer si
+; vous souhaitez installer Organizer. 
+;
+; Utilisez le champ "ORG_PRINTLAYOUTS" pour indiquer
+; si vous souhaitez installer les formats de page.
+; 
+; Utilisez le champ "ORG_PAPERTYPES" pour indiquer si
+; vous souhaitez installer les types de papier.
+;
+;**********************************
+
+ORGANIZER=0
+ORG_PRINTLAYOUTS=1
+ORG_PAPERTYPES=1
+
+
+;**********************************
+;
+; Sous-dossiers d'Organizer
+;
+; Utilisez le champ "ORGBACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "ORGWORK" pour désigner le dossier
+; où enregistrer le travail des utilisateurs.
+;
+;**********************************
+
+ORGBACKUP=c:\lotus\sauve\organize\
+ORGWORK=c:\lotus\travail\organize\
+
+
+;**********************************
+;
+; Installation automatique personnalisée de SmartCenter
+; La section [CUSTOMCTR] fournit les informations
+; relatives à une installation personnalisée
+; de SmartCenter.
+; La présence d'un 1 indique que la fonction
+; correspondante est installée, celle d'un 0 qu'elle
+; n'est pas installée.
+; 
+;**********************************
+
+[CUSTOMCTR]
+
+
+;**********************************
+;
+; Fonctionnalités de SmartCenter
+;
+; Utilisez le champ "SMARTCENTER" pour indiquer si vous
+; souhaitez installer SmartCenter. 
+;
+; Utilisez le champ "SUITESTART" pour indiquer si vous
+; souhaitez installer les icônes SmartSuite dans la
+; barre des tâches.
+;
+;**********************************
+
+SMARTCENTER=0
+SUITESTART=1
+
+;**********************************
+;
+; Sous-dossiers SmartCenter
+;
+; Utilisez le champ "CTRBACKUP" pour désigner le dossier
+; de sauvegarde des fichiers.
+;
+; Utilisez le champ "CTRWORK" pour désigner le dossier
+; où enregistrer le travail des utilisateurs.
+;
+;**********************************
+
+CTRBACKUP=c:\lotus\sauve\smartctr\
+CTRWORK=c:\lotus\travail\smartctr\
+
+;Fin du fichier réponse
